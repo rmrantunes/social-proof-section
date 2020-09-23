@@ -230,7 +230,8 @@ body {
 }
 
 .testimonials .card__status {
-  font-size: 0.875rem;
+  font-weight: 500;
+  font-size: 0.75rem;
   color: #937b92;
 }
 
