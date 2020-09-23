@@ -14,22 +14,20 @@ $white: hsl(0, 0%, 100%);
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   width: 100%;
-  height: 100vh;
   font-family: "Spartan", sans-serif;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
   position: relative;
 }
 
 .bg-top {
-  background: url("images/bg-pattern-top-desktop.svg") no-repeat;
-
-  height: 100vh;
-  width: 100vw;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -37,24 +35,35 @@ body {
 }
 
 .bg-bottom {
-  background: url("images/bg-pattern-bottom-desktop.svg") no-repeat;
-
-  height: 100vh;
-  width: 100vw;
-
   position: absolute;
   bottom: 0;
   right: -20%;
   z-index: -9;
 }
 
+.bg-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .bg-mobile {
+    display: block;
+  }
+
+  .bg-desktop {
+    display: none;
+  }
+}
+
 .top {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   &__info {
-    flex: 3;
+    flex: 4;
     h1 {
       font-size: 3rem;
+      line-height: 1;
       color: $very-dark-magenta;
     }
     p {
@@ -64,6 +73,7 @@ body {
   }
 
   &__rates {
+    margin-left: 10%;
     flex: 5;
     display: flex;
     flex-direction: column;
@@ -76,12 +86,7 @@ body {
     align-items: center;
     padding: 20px 30px;
     border-radius: 10px;
-    width: 475px;
-
-    svg + svg {
-      margin-left: 5px;
-    }
-
+    width: 80%;
     & + & {
       margin-top: 15px;
     }
@@ -94,6 +99,17 @@ body {
       align-self: flex-end;
     }
   }
+
+  &__stars {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+
+    svg + svg {
+      margin-left: 5px;
+    }
+  }
+
   &__rated-in {
     margin-left: 30px;
     font-weight: bold;
@@ -109,7 +125,13 @@ body {
       margin: 0 auto 60px;
       h1 {
         margin-bottom: 15px;
+        font-size: 2.5rem;
       }
+    }
+    
+    &__rates {
+      margin-left: 0;
+      width: 100%;
     }
 
     &__item {
@@ -126,7 +148,7 @@ body {
 .testimonials {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  grid-template-rows: 280px;
+  grid-template-rows: 230px;
   gap: 30px;
   margin-top: 105px;
   
@@ -174,9 +196,10 @@ body {
 
     &__quote {
       margin-top: 15px;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       letter-spacing: 0.01rem;
       line-height: 1.7;
+      color: $light-grayish-magenta;
     }
   }
 }
@@ -187,6 +210,12 @@ body {
     grid-template-rows: auto;
     gap: 15px;
     margin-top: 60px;
+
+    .card {
+      &__quote {
+        font-size: 0.875rem;
+      }
+    }
   }
 }
 
